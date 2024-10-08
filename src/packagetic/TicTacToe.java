@@ -43,6 +43,7 @@ public class TicTacToe {
 				if((i*3)+(j+1) == firstInput) {
 					Board[i][j] = 'O';
 				}
+				
 				System.out.print(Board[i][j]+" |");
 			}
 			System.out.println();
@@ -50,10 +51,33 @@ public class TicTacToe {
 		
 	}
 	
-	public boolean winner() { //deciding the winner analysing the X's and O's
+	public  boolean winner() { //deciding the winner analysing the X's and O's
+		int n = 2;
+		for(int i = 0; i <=n ;i++) {  //checking the row
+			if(Board[i][0]==Board[i][1] && Board[i][1]==Board[i][2]  ) {
+				System.out.println("Player " + Board[i][0]+" won!");
+				return true;
+			}
+		}
+		for(int j=0; j<=n ; j++) { //checking column
+			if(Board[0][j]==Board[1][j] &&  Board[1][j]==Board[2][j]  ) {
+				System.out.println("Player "+Board[0][j]+" won!");
+				return true;
+			}	
+		}
+		  //checking the diagonal
+		if(Board[0][0]==Board[1][1] && Board[1][1]==Board[2][2]) {
+			System.out.println("Player "+Board[1][1]+" won!");
+			return true;
+			}
+		if(Board[0][2]==Board[1][1] && Board[1][1]==Board[2][0]) {
+			System.out.println("Player "+Board[1][1]+" won!");
+			return true;
+		}
 		
 		return false;
 	}
+
 	
 	
 	public static void main(String[] args) {
@@ -69,23 +93,21 @@ public class TicTacToe {
 		Board[2][0] = '7';
 		Board[2][1] = '8';
 		Board[2][2] = '9';
-//=============================================================		
-		while(obj1.winner()) {
-			Scanner scanner = new Scanner(System.in);
-			System.out.println("Player1 enter the cell you want to place 'X' in:");
+//=============================================================
+		Scanner scanner = new Scanner(System.in);
+		while(!obj1.winner()) {
+			System.out.println("Player X enter the cell you want to place 'X' in:");
 			int input1 = scanner.nextInt();
 			obj1.placeX(input1);
 			
 			
-			Scanner scanner2 = new Scanner(System.in);
-			System.out.println("Player2 enter the cell you want to place 'O' in:");
-			int input2 = scanner2.nextInt();
+			
+			System.out.println("Player O enter the cell you want to place 'O' in:");
+			int input2 = scanner.nextInt();
 			obj1.placeO(input2);
-			
-			
-			scanner.close();
-			scanner2.close();
 		}
+		scanner.close();
+//		scanner2.close();
 		
 	}
 	
