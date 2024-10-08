@@ -24,7 +24,7 @@ public class TicTacToe {
 			System.out.println("|--|--|--|");
 			System.out.print("|");
 			for(int j =0 ; j<=2; j++) {
-				if(i+j+1 == firstInput) {
+				if((i*3)+(j+1) == firstInput) {
 					Board[i][j] = 'X';
 				}
 				System.out.print(Board[i][j]+" |");
@@ -40,7 +40,7 @@ public class TicTacToe {
 			System.out.println("|--|--|--|");
 			System.out.print("|");
 			for(int j =0 ; j<=2; j++) {
-				if(i+j+1 == firstInput) {
+				if((i*3)+(j+1) == firstInput) {
 					Board[i][j] = 'O';
 				}
 				System.out.print(Board[i][j]+" |");
@@ -50,8 +50,9 @@ public class TicTacToe {
 		
 	}
 	
-	public void winner() { //deciding the winner analysing the X's and O's
+	public boolean winner() { //deciding the winner analysing the X's and O's
 		
+		return false;
 	}
 	
 	
@@ -69,20 +70,23 @@ public class TicTacToe {
 		Board[2][1] = '8';
 		Board[2][2] = '9';
 //=============================================================		
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Player1 enter the cell you want to place 'X' in:");
-		int input1 = scanner.nextInt();
-		obj1.placeX(input1);
+		while(obj1.winner()) {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Player1 enter the cell you want to place 'X' in:");
+			int input1 = scanner.nextInt();
+			obj1.placeX(input1);
+			
+			
+			Scanner scanner2 = new Scanner(System.in);
+			System.out.println("Player2 enter the cell you want to place 'O' in:");
+			int input2 = scanner2.nextInt();
+			obj1.placeO(input2);
+			
+			
+			scanner.close();
+			scanner2.close();
+		}
 		
-		
-		Scanner scanner2 = new Scanner(System.in);
-		System.out.println("Player2 enter the cell you want to place 'O' in:");
-		int input2 = scanner.nextInt();
-		obj1.placeO(input2);
-		
-		
-		scanner.close();
-		scanner2.close();
 	}
 	
 }
