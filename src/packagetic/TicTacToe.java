@@ -1,0 +1,81 @@
+package packagetic;
+
+import java.util.Scanner;
+
+public class TicTacToe {
+	 static char[][] Board = new char[3][3];
+	 int firstInput;
+	 
+	 
+	public void showBoard() {
+		System.out.println("|--|--|--|");
+		System.out.println("|1 |2 |3 |");
+		System.out.println("|--------|");
+		System.out.println("|4 |5 |6 |");
+		System.out.println("|--------|");
+		System.out.println("|7 |8 |9 |");
+		System.out.println("|--|--|--|");
+	}
+	
+	
+	public void placeX(int firstInput) {
+		this.firstInput = firstInput;
+		for(int i =0 ; i<=2; i++) {
+			System.out.println("|--|--|--|");
+			System.out.print("|");
+			for(int j =0 ; j<=2; j++) {
+				if(i+j+1 == firstInput) {
+					Board[i][j] = 'X';
+				}
+				System.out.print(Board[i][j]+" |");
+			}
+			System.out.println();
+		}
+		
+	}
+	
+	public void placeO(int firstInput) {
+		this.firstInput = firstInput;
+		for(int i =0 ; i<=2; i++) {
+			System.out.println("|--|--|--|");
+			System.out.print("|");
+			for(int j =0 ; j<=2; j++) {
+				if(i+j+1 == firstInput) {
+					Board[i][j] = 'O';
+				}
+				System.out.print(Board[i][j]+" |");
+			}
+			System.out.println();
+		}
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		TicTacToe obj1 = new TicTacToe();
+		obj1.showBoard();	
+//============================================================		
+		Board[0][0] = '1';
+		Board[0][1] = '2';
+		Board[0][2] = '3';
+		Board[1][0] = '4';
+		Board[1][1] = '5';
+		Board[1][2] = '6';
+		Board[2][0] = '7';
+		Board[2][1] = '8';
+		Board[2][2] = '9';
+//=============================================================		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the cell you want to place 'X' in:");
+		int input1 = scanner.nextInt();
+		scanner.close();
+		obj1.placeX(input1);
+		
+		
+		Scanner scanner2 = new Scanner(System.in);
+		System.out.println("Enter the cell you want to place 'O' in:");
+		int input2 = scanner.nextInt();
+		scanner2.close();
+		obj1.placeO(input2);
+	}
+}
